@@ -9,22 +9,20 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-    public function up(): void
+    public function up()
     {
-        Schema::create('customers', function (Blueprint $table) {
+        Schema::create('chat_room_users', function (Blueprint $table) {
             $table->id();
-            $table->string('idg');
-            $table->string('nama_customer');
-            $table->string('nomor_customer');
+            $table->foreignUuid('chat_room_id');
+            $table->foreignId('user_id');
             $table->timestamps();
         });
     }
-
     /**
      * Reverse the migrations.
      */
     public function down(): void
     {
-        Schema::dropIfExists('customers');
+        Schema::dropIfExists('chat_room_users');
     }
 };

@@ -9,13 +9,11 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-    public function up(): void
+    public function up()
     {
-        Schema::create('kategoris', function (Blueprint $table) {
-            $table->id();
-            $table->string('idg');
-            $table->string('nama_kategori');
-            $table->string("descripsi");
+        Schema::create('chat_rooms', function (Blueprint $table) {
+            $table->uuid('id')->primary();
+            $table->string('name')->nullable();
             $table->timestamps();
         });
     }
@@ -25,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('kategoris');
+        Schema::dropIfExists('chat_rooms');
     }
 };
